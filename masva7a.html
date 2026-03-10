@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسبحة إلكترونية - أذكار متعددة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1e3c3f 0%, #315d5f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .tasbih-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 32px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #f9f3e3;
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .dhikr-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .dhikr-item {
+            background: rgba(254, 249, 232, 0.9);
+            border-radius: 60px;
+            padding: 16px 20px;
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid #c1a475;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .dhikr-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 2;
+            min-width: 150px;
+        }
+
+        .dhikr-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3c3f;
+            background: #d4b17c;
+            padding: 8px 16px;
+            border-radius: 40px;
+            box-shadow: inset 0 -2px 0 #6b4f34;
+            line-height: 1.2;
+            border: 1px solid #efd6ac;
+        }
+
+        .dhikr-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e3c3f;
+            min-width: 80px;
+            text-align: center;
+            background: #fef9e8;
+            padding: 5px 0;
+            border-radius: 40px;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+            border: 1px solid #b58b5b;
+        }
+
+        .dhikr-btn {
+            background: radial-gradient(circle at 30% 20%, #e4c590, #b58b5b);
+            border: none;
+            color: #1e2f32;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 15px 25px;
+            border-radius: 60px;
+            box-shadow: 0 6px 0 #6b4f34, 0 5px 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: all 0.08s ease;
+            border: 2px solid #efd6ac;
+            min-width: 120px;
+            flex: 1;
+        }
+
+        .dhikr-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #6b4f34, 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .reset-all-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #f9f3e3;
+            color: #f9f3e3;
+            font-size: 1.5rem;
+            padding: 16px 25px;
+            border-radius: 60px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .reset-all-btn:active {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0.98);
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #d4d0c0;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 4px black;
+            line-height: 1.6;
+        }
+
+        /* للشاشات الصغيرة */
+        @media (max-width: 500px) {
+            .dhikr-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .dhikr-info {
+                justify-content: center;
+                width: 100%;
+            }
+            .dhikr-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tasbih-card">
+        <h1>🔹 مسبحة الأذكار 🔹</h1>
+
+        <div class="dhikr-container">
+            <!-- سبحان الله -->
+            <div class="dhikr-item">
+                <div class="dhikr-info">
+                    <span class="dhikr-name">سبحان الله</span>
+                    <span class="dhikr-counter" id="count1">0</span>
+                </div>
+                <button class="dhikr-btn" id="inc1">➕</button>
+            </div>
+
+            <!-- الحمدلله -->
+            <div class="dhikr-item">
+                <div class="dhikr-info">
+                    <span class="dhikr-name">الحمــــــدلله</span>
+                    <span class="dhikr-counter" id="count2">0</span>
+                </div>
+                <button class="dhikr-btn" id="inc2">➕</button>
+            </div>
+
+            <!-- الله أكبر -->
+            <div class="dhikr-item">
+                <div class="dhikr-info">
+                    <span class="dhikr-name">الله أكـــــــــبر</span>
+                    <span class="dhikr-counter" id="count3">0</span>
+                </div>
+                <button class="dhikr-btn" id="inc3">➕</button>
+            </div>
+        </div>
+
+        <button class="reset-all-btn" id="resetAll">إعادة تعيين الكل (0)</button>
+
+        <footer>
+            اللهم هب هذا العمل إلى المرحوم<br>
+            رمضان أبو المكارم عبد الرسول
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // قيم العدادات
+            let counters = [0, 0, 0]; // سبحان الله, الحمدلله, الله أكبر
+
+            // عناصر العرض
+            const countSpans = [
+                document.getElementById('count1'),
+                document.getElementById('count2'),
+                document.getElementById('count3')
+            ];
+
+            // أزرار الزيادة
+            const incButtons = [
+                document.getElementById('inc1'),
+                document.getElementById('inc2'),
+                document.getElementById('inc3')
+            ];
+
+            // زر إعادة التعيين الكلي
+            const resetBtn = document.getElementById('resetAll');
+
+            // تحديث جميع العروض
+            function updateAllCounters() {
+                for (let i = 0; i < counters.length; i++) {
+                    countSpans[i].textContent = counters[i];
+                }
+            }
+
+            // إضافة حدث النقر لكل زر زيادة
+            for (let i = 0; i < incButtons.length; i++) {
+                incButtons[i].addEventListener('click', function() {
+                    counters[i]++;
+                    updateAllCounters();
+                });
+
+                // دعم اللمس (اختياري)
+                incButtons[i].addEventListener('touchstart', function(e) {
+                    e.preventDefault(); // يمنع أي تكبير أو تحريك غير مقصود
+                });
+            }
+
+            // حدث زر إعادة التعيين
+            resetBtn.addEventListener('click', function() {
+                counters = [0, 0, 0];
+                updateAllCounters();
+            });
+
+            // العرض الأولي
+            updateAllCounters();
+        })();
+    </script>
+</body>
+</html>
